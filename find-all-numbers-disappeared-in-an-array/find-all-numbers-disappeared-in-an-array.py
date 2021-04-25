@@ -1,20 +1,12 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        max_len = len(nums) # O(n) 
+        for i in range(len(nums)):
+            index = abs(nums[i]) - 1
+            nums[index] = -1 * abs(nums[index])
         
-        tmp = {} # O(n) space
-        
-        for i in nums:
-            if i in tmp:
-                pass
-            else:
-                tmp[i] = 1
-                
-        res = [] # extra space 
-        
-        for i in range(1,max_len+1):
-            if i not in tmp:
-                res.append(i)
-        
+        # O(n) till now
+        res = [] # question said it will not be counted in the space compelexity
+        for i,val in enumerate(nums):
+            if val > 0:
+                res.append(i+1)
         return res
-        
