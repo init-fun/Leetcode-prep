@@ -1,13 +1,14 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # x + y = target
+        # target - curr = y 
+        # if y in list then return the num else not present
         tmp = {}
         for index, val in enumerate(nums):
-            # val + y = target
-            # y = target - val
-            y = target - val
-            
+            y = target - nums[index]
             if y in tmp:
-                second_index = tmp[y]
-                return [index, second_index]
+                return [index, tmp[y]]
             else:
-                tmp[val] = index
+                tmp[val] = index 
+                
+                
