@@ -1,11 +1,9 @@
 class Solution:
-    def maxProfit(self, nums: List[int]) -> int:
-        min_ele = nums[0]
-        profit = 0 
-        for i in nums[1:]:
-            min_ele = min(min_ele, i)
-            profit = max(profit, i- min_ele)
-        
-        return profit 
-    
-        
+    def maxProfit(self, arr: List[int]) -> int:
+        new_min = arr[0]
+        old_max = 0
+        for i in range(1, len(arr)):
+            if arr[i] <= new_min:
+                new_min = arr[i]
+            old_max = max(old_max, arr[i] - new_min)
+        return old_max
