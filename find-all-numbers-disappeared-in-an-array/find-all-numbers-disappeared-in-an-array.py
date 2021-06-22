@@ -1,12 +1,23 @@
+from collections import Counter
 class Solution:
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        for i in range(len(nums)):
-            index = abs(nums[i]) - 1
-            nums[index] = -1 * abs(nums[index])
+    def findDisappearedNumbers(self, arr: List[int]) -> List[int]:
+        # time limit exceeded
         
-        # O(n) till now
-        res = [] # question said it will not be counted in the space compelexity
-        for i,val in enumerate(nums):
-            if val > 0:
+        # res = []
+        # for i in range(1,len(nums)+1):
+        #     if i in nums:
+        #         continue
+        #     res.append(i)
+        # return res
+        res = []
+        arr_len = len(arr)
+        for i in range(arr_len):
+            index = abs(arr[i]) - 1
+            arr[index] = -1 * abs(arr[index])
+        
+        for i in range(arr_len):
+            if arr[i] > 0:
                 res.append(i+1)
         return res
+        
+        
