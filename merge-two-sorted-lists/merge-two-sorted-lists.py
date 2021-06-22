@@ -4,31 +4,28 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, first: ListNode, second: ListNode) -> ListNode:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        res = ListNode()
+        first_node= res
+        while l1 and l2:
+            if l1.val <= l2.val:
+                res.next = ListNode(l1.val)
+                l1 = l1.next
+                res = res.next
+            elif l1.val >= l2.val:
+                res.next =  ListNode(l2.val)
+                l2 = l2.next
+                res = res.next
+
         
-        dummy = ListNode(0)
-        very_first = dummy
-        while first and second:
-            if first.val <= second.val:
-                dummy.next = ListNode(first.val)
-                first = first.next
-            else:
-                dummy.next = ListNode(second.val)
-                second = second.next
-            dummy = dummy.next
-            
-        while first:
-            dummy.next = ListNode(first.val)
-            first =first.next
-            dummy = dummy.next
-            
-        while second:
-            dummy.next = ListNode(second.val)
-            second = second.next
-            dummy = dummy.next
-            
-        return very_first.next
+        while l1:
+            res.next = ListNode(l1.val)
+            l1 = l1.next
+            res = res.next
         
+        while l2:
+            res.next = ListNode(l2.val)
+            l2 = l2.next
+            res = res.next
         
-        
-        
+        return first_node.next
